@@ -21,8 +21,12 @@ export default class ScrollArea extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            topPosition: 0,
-            leftPosition: 0,
+            topPosition: (props.initialPosition && props.initialPosition.top) 
+                ? props.initialPosition.top
+                : 0,
+            leftPosition: (props.initialPosition && props.initialPosition.left) 
+                ? props.initialPosition.left
+                : 0,
             realHeight: 0,
             containerHeight: 0,
             realWidth: 0,
@@ -480,6 +484,7 @@ ScrollArea.propTypes = {
     swapWheelAxes: PropTypes.bool,
     stopScrollPropagation: PropTypes.bool,
     focusableTabIndex: PropTypes.number,
+    initialPosition: PropTypes.object
 };
 
 ScrollArea.defaultProps = {
